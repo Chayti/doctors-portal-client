@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import useAuth from './../../../hooks/useAuth';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -47,7 +48,10 @@ const Appointments = ({ date }) => {
                                 </TableCell>
                                 <TableCell align="right">{row.time}</TableCell>
                                 <TableCell align="right">{row.serviceName}</TableCell>
-                                <TableCell align="right">{row.fat}</TableCell>
+                                <TableCell align="right">{row.payment ?
+                                    'Paid' :
+                                    <Link to={`/dashboard/payment/${row._id}`}><button>Pay</button></Link>
+                                }</TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
